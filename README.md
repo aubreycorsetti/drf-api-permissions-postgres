@@ -1,5 +1,4 @@
-# Lab 32
-
+# Lab 32 and Lab 33
 ## Author: Aubrey Corsetti
 
 ### How to run tests:
@@ -12,11 +11,17 @@ Setup
 > pip install django 
 > pip install djangorestframework
 > pip install psycopg2-binary
-> pip freeze > requirements.txt
 > django-admin startproject jobs_project . 
-> python manage.py startapp jobs 
-> python manage.py createsuperuser 
-> python manage.py makemigrations jobs 
-> python manage.py migrate python manage.py runserver
+> python manage.py startapp jobs
+> pip install djangorestframework-simplejwt
+> pip install gunicorn
+> pip install whitenoise
+> python manage.py migrate
+> pip freeze > requirements.txt
+> python manage.py createsuperuser
 
-Load the site at http://0.0.0.0:8001/admin
+To run:
+
+> gunicorn jobs_project.wsgi:application --bind 0.0.0.0:8000 --workers 4
+
+Load the site at http://0.0.0.0:8001/
